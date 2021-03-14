@@ -37,7 +37,7 @@
     
     <!-- corner radius -->
     <entry name="CornerRadius" type = "Int">
-       <default>6</default>
+       <default>3</default>
        <min>1</min>
        <max>8</max>
     </entry>

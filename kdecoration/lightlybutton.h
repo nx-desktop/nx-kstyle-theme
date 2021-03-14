@@ -2,27 +2,27 @@
 #define LIGHTLY_BUTTONS_H
 
 /*
-* Copyright 2014  Martin Gräßlin <mgraesslin@kde.org>
-* Copyright 2014  Hugo Pereira Da Costa <hugo.pereira@free.fr>
-*
-* This program is free software; you can redistribute it and/or
-* modify it under the terms of the GNU General Public License as
-* published by the Free Software Foundation; either version 2 of
-* the License or (at your option) version 3 or any later version
-* accepted by the membership of KDE e.V. (or its successor approved
-* by the membership of KDE e.V.), which shall act as a proxy
-* defined in Section 14 of version 3 of the license.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
-#include <KDecoration2/DecorationButton>
+ * Copyright 2014  Martin Gräßlin <mgraesslin@kde.org>
+ * Copyright 2014  Hugo Pereira Da Costa <hugo.pereira@free.fr>
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License as
+ * published by the Free Software Foundation; either version 2 of
+ * the License or (at your option) version 3 or any later version
+ * accepted by the membership of KDE e.V. (or its successor approved
+ * by the membership of KDE e.V.), which shall act as a proxy
+ * defined in Section 14 of version 3 of the license.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
 #include "lightlydecoration.h"
+#include <KDecoration2/DecorationButton>
 
 #include <QHash>
 #include <QImage>
@@ -31,107 +31,125 @@ class QVariantAnimation;
 
 namespace Lightly
 {
+class Button : public KDecoration2::DecorationButton
+{
+    Q_OBJECT
 
-    class Button : public KDecoration2::DecorationButton
+public:
+    //* constructor
+    explicit Button(QObject *parent, const QVariantList &args);
+
+    //* destructor
+    virtual ~Button() = default;
+
+    //* button creation
+    static Button *create(KDecoration2::DecorationButtonType type, KDecoration2::Decoration *decoration, QObject *parent);
+
+    //* render
+    virtual void paint(QPainter *painter, const QRect &repaintRegion) override;
+
+    //* flag
+    enum Flag { FlagNone, FlagStandalone, FlagFirstInList, FlagLastInList };
+
+    //* flag
+    void setFlag(Flag value)
     {
-        Q_OBJECT
+        m_flag = value;
+    }
 
-        public:
+    //* standalone buttons
+    bool isStandAlone() const
+    {
+        return m_flag == FlagStandalone;
+    }
 
-        //* constructor
-        explicit Button(QObject *parent, const QVariantList &args);
+    //* offset
+    void setOffset(const QPointF &value)
+    {
+        m_offset = value;
+    }
 
-        //* destructor
-        virtual ~Button() = default;
+    //* horizontal offset, for rendering
+    void setHorizontalOffset(qreal value)
+    {
+        m_offset.setX(value);
+    }
 
-        //* button creation
-        static Button *create(KDecoration2::DecorationButtonType type, KDecoration2::Decoration *decoration, QObject *parent);
+    //* vertical offset, for rendering
+    void setVerticalOffset(qreal value)
+    {
+        m_offset.setY(value);
+    }
 
-        //* render
-        virtual void paint(QPainter *painter, const QRect &repaintRegion) override;
+    //* set icon size
+    void setIconSize(const QSize &value)
+    {
+        m_iconSize = value;
+    }
 
-        //* flag
-        enum Flag
-        {
-            FlagNone,
-            FlagStandalone,
-            FlagFirstInList,
-            FlagLastInList
-        };
+    //*@name active state change animation
+    //@{
+    void setOpacity(qreal value)
+    {
+        if (m_opacity == value)
+            return;
+        m_opacity = value;
+        update();
+    }
 
-        //* flag
-        void setFlag( Flag value )
-        { m_flag = value; }
+    qreal opacity() const
+    {
+        return m_opacity;
+    }
 
-        //* standalone buttons
-        bool isStandAlone() const { return m_flag == FlagStandalone; }
+    //@}
 
-        //* offset
-        void setOffset( const QPointF& value )
-        { m_offset = value; }
+private Q_SLOTS:
 
-        //* horizontal offset, for rendering
-        void setHorizontalOffset( qreal value )
-        { m_offset.setX( value ); }
+    //* apply configuration changes
+    void reconfigure();
 
-        //* vertical offset, for rendering
-        void setVerticalOffset( qreal value )
-        { m_offset.setY( value ); }
+    //* animation state
+    void updateAnimationState(bool);
 
-        //* set icon size
-        void setIconSize( const QSize& value )
-        { m_iconSize = value; }
+private:
+    //* private constructor
+    explicit Button(KDecoration2::DecorationButtonType type, Decoration *decoration, QObject *parent = nullptr);
 
-        //*@name active state change animation
-        //@{
-        void setOpacity( qreal value )
-        {
-            if( m_opacity == value ) return;
-            m_opacity = value;
-            update();
-        }
+    //* draw button icon
+    void drawIcon(QPainter *) const;
 
-        qreal opacity() const
-        { return m_opacity; }
+    //*@button radius
+    //@{
+    qreal buttonRadius() const;
+    //@}
 
-        //@}
+    //*@name colors
+    //@{
+    QColor foregroundColor() const;
+    QColor backgroundColor() const;
+    QColor autoColor(const bool, const bool, const bool, const QColor, const QColor) const;
+    //@}
 
-        private Q_SLOTS:
+    //*@hover buttons
+    //@{
+    bool hovered() const;
+    //@}
 
-        //* apply configuration changes
-        void reconfigure();
+    Flag m_flag = FlagNone;
 
-        //* animation state
-        void updateAnimationState(bool);
+    //* active state change animation
+    QVariantAnimation *m_animation;
 
-        private:
+    //* vertical offset (for rendering)
+    QPointF m_offset;
 
-        //* private constructor
-        explicit Button(KDecoration2::DecorationButtonType type, Decoration *decoration, QObject *parent = nullptr);
+    //* icon size
+    QSize m_iconSize;
 
-        //* draw button icon
-        void drawIcon( QPainter *) const;
-
-        //*@name colors
-        //@{
-        QColor foregroundColor() const;
-        QColor backgroundColor() const;
-        //@}
-
-        Flag m_flag = FlagNone;
-
-        //* active state change animation
-        QVariantAnimation *m_animation;
-
-        //* vertical offset (for rendering)
-        QPointF m_offset;
-
-        //* icon size
-        QSize m_iconSize;
-
-        //* active state change opacity
-        qreal m_opacity = 0;
-    };
+    //* active state change opacity
+    qreal m_opacity = 0;
+};
 
 } // namespace
 

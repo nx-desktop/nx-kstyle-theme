@@ -20,21 +20,19 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA .        *
  *************************************************************************/
 
-
 namespace Lightly
 {
-
-    struct PropertyNames
-    {
-        static const char noAnimations[];
-        static const char noWindowGrab[];
-        static const char netWMForceShadow[];
-        static const char netWMSkipShadow[];
-        static const char sidePanelView[];
-        static const char toolButtonAlignment[];
-        static const char menuTitle[];
-        static const char alteredBackground[];
-    };
+struct PropertyNames {
+    static const char noAnimations[];
+    static const char noWindowGrab[];
+    static const char netWMForceShadow[];
+    static const char netWMSkipShadow[];
+    static const char sidePanelView[];
+    static const char toolButtonAlignment[];
+    static const char menuTitle[];
+    static const char alteredBackground[];
+    static const char highlightNeutral[];
+};
 
 }
 
