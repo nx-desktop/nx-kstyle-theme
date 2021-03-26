@@ -15,6 +15,7 @@ apt-key adv --keyserver keyserver.ubuntu.com --recv-keys \
 apt -qq update
 
 ### Install Dependencies
+
 DEBIAN_FRONTEND=noninteractive apt -qq -yy install devscripts lintian build-essential automake autotools-dev rename
 mk-build-deps -i -t "apt-get --yes" -r
 
@@ -28,6 +29,7 @@ find . -type f -exec sed -i 's/Lightly/Nitrux/g' {} +
 find . -type f -exec sed -i 's/LIGHTLY/NITRUX/g' {} +
 
 ### Build Deb
+
 mkdir source
 mv ./* source/ # Hack for debuild
 cd source
