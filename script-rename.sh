@@ -1,5 +1,7 @@
 # /bin/bash
 
+### Use this script to build locally.
+
 set -x
 
 mkdir -p src-rename/build
