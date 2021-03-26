@@ -16,12 +16,12 @@ apt -qq update
 
 ###	Rename files, folders and change strings
 
-find . -execdir rename 's/lightly/nitrux/' '{}' \+
-find . -execdir rename 's/Lightly/Nitrux/' '{}' \+
+find {cmake,colors,kdecoration,kstyle,liblightlycommon,misc,CMakeLists.txt,LightlyConfig.cmake.in} -execdir rename 's/lightly/nitrux/' '{}' \+
+find {cmake,colors,kdecoration,kstyle,liblightlycommon,misc,CMakeLists.txt,LightlyConfig.cmake.in} -execdir rename 's/Lightly/Nitrux/' '{}' \+
 
-find . -type f -exec sed -i 's/lightly/nitrux/g' {} +
-find . -type f -exec sed -i 's/Lightly/Nitrux/g' {} +
-find . -type f -exec sed -i 's/LIGHTLY/NITRUX/g' {} +
+find {cmake,colors,kdecoration,kstyle,liblightlycommon,misc,CMakeLists.txt,LightlyConfig.cmake.in} -type f -exec sed -i 's/lightly/nitrux/g' {} +
+find {cmake,colors,kdecoration,kstyle,liblightlycommon,misc,CMakeLists.txt,LightlyConfig.cmake.in} -type f -exec sed -i 's/Lightly/Nitrux/g' {} +
+find {cmake,colors,kdecoration,kstyle,liblightlycommon,misc,CMakeLists.txt,LightlyConfig.cmake.in} -type f -exec sed -i 's/LIGHTLY/NITRUX/g' {} +
 
 ### Install Dependencies
 DEBIAN_FRONTEND=noninteractive apt -qq -yy install devscripts lintian build-essential automake autotools-dev
