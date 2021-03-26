@@ -1,79 +1,10 @@
-<p align="center">
-  <img src="logo.png"/>
-</p>
+# Nitrux KStyle [![Build Status](https://travis-ci.org/nx-desktop/nx-kstyle-theme.svg?branch=master)](https://travis-ci.org/nx-desktop/nx-kstyle-theme)
 
-*Lightly* is a fork of breeze theme style that aims to be visually modern and minimalistic. 
-
-## Development ⚠️
-
-Lightly is a work in progress theme, there is still a lot to change, so expect bugs! Some applications may suddenly crash or flicker.
-
-If you have any feedback or encounter some bugs, feel free to open an issue or a pr.
-
-
-## Screenshots
-
-![default](https://github.com/Luwx/Lightly/blob/master/Lightly-default.png)
-
-With transparent dolphin view off and no sidebar transparency:
-![custom](https://github.com/Luwx/Lightly/blob/master/Lightly-custom.png)
-
-With a full glass color scheme (currently full glass color schemes are very buggy and not fully supported):
-![fullglass](https://github.com/Luwx/Lightly/blob/master/Lightly-fullglass.png)
-
-## Configuration
-
-![config page](https://github.com/Luwx/Lightly/blob/master/config.png)
-
-Lightly configuration page can be found in the KDE system settings under the Application style section. 
-
-
-Most of these options are inherited from Breeze style, but Lightly has a few exclusive options that are enabled by default, including:
-
-* Transparent Dolphin view (under the **frames** tab). This option disables the background and shadows of Dolphin view widget and draws top and bottom separators when the view has scrollable content.
-
-*  Sidebar opacity (under the **transparency** tab). By default, it's 60. If it's bellow 100, shadows will be drawn automatically. 
-
-The toolbar and menubar will follow the **titlebar** opacity. To configure the titlebar opacity, you will have to change the color scheme file directly in ~/.local/share/color-schemes. Open your desired color scheme and, in the ```[WM]``` section, add a fourth value to ```activeBackground``` and ```inactiveBackground```, like ```activeBackground=0,0,0,127``` where the last value is the alpha, that ranges from 0 (completely transparent) to 255 (totally opaque).
-
-
-For rounded corners and outline around the window, check this kwin effect: https://github.com/Luwx/LightlyShaders
+*Nitrux* is a fork of the Lightly theme style customized to provide the styling of the Nitrux Kvantum themes. 
 
 ## Installation
 
-### Installing Lightly from RPM repository on openSUSE Tumbleweed:
-
-1. Add "sputnik-look-and-feel" repository:
-```sudo zypper ar -ef https://download.opensuse.org/repositories/home:/sputnik:/look-and-feel/openSUSE_Tumbleweed/ sputnik-look-and-feel```
-2. Refresh repository list:
-```sudo zypper ref```
-3. You will be notified about received new repository key. And you will be asked if you want to accept the key. This repository is created on OBS. All builds are reproducible.
-Type "```a```" and press enter.
-4. Install Lightly:
-```sudo zypper in Lightly```
-
-### Fedora 32 RPM repository
-
-1. Create repo file:
-```
-echo  "[sputnik-look-and-feel]
-name=Look And Feel (Fedora_32)
-type=rpm-md
-baseurl=https://download.opensuse.org/repositories/home:/sputnik:/look-and-feel/Fedora_32/
-gpgcheck=1
-gpgkey=https://download.opensuse.org/repositories/home:/sputnik:/look-and-feel/Fedora_32/repodata/repomd.xml.key
-enabled=1" | sudo tee -a /etc/yum.repos.d/sputnik-look-and-feel.repo
-```
-2. Install Lightly:
-```sudo dnf install Lightly```
-
-
-
 ## Manual installation
-
-### Dependencies
-
-Taken from https://github.com/n4n0GH/hello
 
 #### Ubuntu
 ```
@@ -104,7 +35,7 @@ sudo eopkg install extra-cmake-modules kdecoration-devel qt5-declarative-devel q
 ### Build and install
 
 ```
-git clone --single-branch --depth=1 https://github.com/Luwx/Lightly.git
+git clone --single-branch --depth=1 https://github.com/nx-desktop/nx-kstyle-theme.git
 cd Lightly && mkdir build && cd build
 cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib -DBUILD_TESTING=OFF ..
 make
@@ -120,9 +51,11 @@ sudo make uninstall
 
 ## Acknowledgments
 
-Breeze authors and Kvantum developer Pedram Pourang.
+Breeze authors, Kvantum developer Pedram Pourang, Luwx.
 
 
+# Issues
+If you find problems with the contents of this repository please create an issue.
 
-
+©2020 Nitrux Latinoamericana S.C.
 
