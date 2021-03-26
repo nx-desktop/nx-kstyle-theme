@@ -1,6 +1,6 @@
 # Nitrux KStyle [![Build Status](https://travis-ci.org/nx-desktop/nx-kstyle-theme.svg?branch=master)](https://travis-ci.org/nx-desktop/nx-kstyle-theme)
 
-*Nitrux* is a fork of the Lightly theme style customized to provide the styling of the Nitrux Kvantum themes. 
+*Nitrux* is a fork of the Lightly theme style customized to provide the Nitrux Kvantum themes' styling. 
 
 ## Installation
 
@@ -33,7 +33,6 @@ sudo eopkg install extra-cmake-modules kdecoration-devel qt5-declarative-devel q
 
 
 ### Build and install
-
 ```
 git clone --single-branch --depth=1 https://github.com/nx-desktop/nx-kstyle-theme.git
 cd Lightly && mkdir build && cd build
@@ -43,14 +42,12 @@ sudo make install
 ```
 
 ### Uninstall
-
 In the build folder:
 ```
 sudo make uninstall
 ```
 
 ## Acknowledgments
-
 Breeze authors, Kvantum developer Pedram Pourang, Luwx.
 
 
