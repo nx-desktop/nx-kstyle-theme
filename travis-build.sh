@@ -24,7 +24,7 @@ find {cmake,colors,kdecoration,kstyle,liblightlycommon,misc,CMakeLists.txt,Light
 find {cmake,colors,kdecoration,kstyle,liblightlycommon,misc,CMakeLists.txt,LightlyConfig.cmake.in} -type f -exec sed -i 's/LIGHTLY/NITRUX/g' {} +
 
 ### Install Dependencies
-DEBIAN_FRONTEND=noninteractive apt -qq -yy install devscripts lintian build-essential automake autotools-dev
+DEBIAN_FRONTEND=noninteractive apt -qq -yy install devscripts lintian build-essential automake autotools-dev rename
 mk-build-deps -i -t "apt-get --yes" -r
 
 ### Build Deb
