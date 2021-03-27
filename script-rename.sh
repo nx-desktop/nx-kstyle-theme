@@ -6,7 +6,7 @@ set -x
 
 mkdir -p src-rename/build
 
-cp -R {cmake,colors,kdecoration,kstyle,liblightlycommon,misc,CMakeLists.txt,LightlyConfig.cmake.in} src-rename
+cp -R {cmake,kdecoration,kstyle,liblightlycommon,misc,CMakeLists.txt,LightlyConfig.cmake.in} src-rename
  
 find src-rename/ -execdir rename 's/lightly/nitrux/' '{}' \+
 find src-rename/ -execdir rename 's/Lightly/Nitrux/' '{}' \+

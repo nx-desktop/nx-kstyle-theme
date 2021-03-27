@@ -1,3 +1,9 @@
+nx-kstyle-theme (0.0.2) nitrux; urgency=medium
+
+  * Remove Lightly color-sceheme from CMakeLists as it conflicts when renamed with our look-and-feel.
+
+ -- Uri Hererra <uri_herrera@nxos.org>  Fri, 26 May 2020 18:02:00 -0500
+
 nx-kstyle-theme (0.0.1) nitrux; urgency=medium
 
   * Create package.
