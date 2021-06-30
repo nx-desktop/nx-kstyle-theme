@@ -2,7 +2,7 @@ Source: nx-kstyle-theme
 Section: KDE
 Priority: optional
 Maintainer: Uri Herrera <uri_herrera@nxos.org>
-Build-Depends: debhelper (>=9), cmake, extra-cmake-modules, build-essential, libkf5config-dev, libkdecorations2-dev, libqt5x11extras5-dev, qtdeclarative5-dev, libkf5guiaddons-dev, libkf5configwidgets-dev, libkf5windowsystem-dev, libkf5coreaddons-dev, libkf5iconthemes-dev, gettext, frameworkintegration, libkf5kcmutils-dev, libkf5style-dev, libkf5wayland-dev
+Build-Depends: libkf5config-dev, libkdecorations2-dev, libqt5x11extras5-dev, qtdeclarative5-dev, libkf5guiaddons-dev, libkf5configwidgets-dev, libkf5windowsystem-dev, libkf5coreaddons-dev, libkf5iconthemes-dev, frameworkintegration, libkf5kcmutils-dev, libkf5style-dev, libkf5wayland-dev
 Standards-Version: 3.9.6
 
 Package: nx-kstyle-theme
